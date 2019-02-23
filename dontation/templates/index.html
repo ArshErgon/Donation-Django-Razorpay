@@ -298,8 +298,8 @@
 							<form class="form-control" action="" method="POST">{% csrf_token %}
 								 	<div class="row">
 										{% if  name %}
-										<div class="col-xl-12 d-flex">
-											<button class="submit-btn primary-btn mt-20 text-uppercase" id="rzp-button1">Dontate<span class="lnr lnr-arrow-right"></span></button>
+										<div class="col-lg-12 d-flex">
+											<center><button class="submit-btn primary-btn mt-20 text-uppercase" id="rzp-button1">Dontate<span class="lnr lnr-arrow-right"></span></button></center>
 										</div>
 
 										<!--  razorpay start here -->
@@ -308,7 +308,7 @@
 										var options = {
 										    "key": "rzp_test_VKwzQnRYkTmxEW",
 										    "amount": "{{ donation }}", // 2000 paise = INR 20
-										    "name": "NGO",
+										    "name": "{{ name }}",
 										    "description": "{{ message }}",
 										    "image": "{% static 'dontation/img/logo.png' %}",
 										    "handler": function (response){
@@ -349,7 +349,6 @@
 										<div class="col-lg-12 d-flex">
 											<button class="submit-btn primary-btn mt-20 text-uppercase" >Continue<span class="lnr lnr-arrow-right"></span></button>
 										</div>
-
 									<!--  id="rzp-button1"  -->
 									</div>
 
