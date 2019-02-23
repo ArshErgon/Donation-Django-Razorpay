@@ -1,0 +1,47 @@
+<form class=""  method="post">{% csrf_token %}
+  <!-- <input type="text" name="name"><br>
+  <input type="email" name="email" value=""><br>
+  <input type="number" name="dontation" value="Donatation"><br>
+  <input type="submit" name="" value="submit"> -->
+
+  {{ donation_form.as_p }}
+  <input type="submit" name="Submit" id="rzp-button1">
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+  var options = {
+      "key": "rzp_test_VKwzQnRYkTmxEW",
+      "amount": "{{ donation }}", // 2000 paise = INR 20
+      "name": "NGO",
+      "description": "{{ message }}",
+      "image": "/your_logo.png",
+      "handler": function (response){
+          alert(response.razorpay_payment_id);
+      },
+      "prefill": {
+          "name": "{{ name }}",
+          "email": "{{ email }}"
+      },
+      "theme": {
+          "color": "blue"
+      }
+  };
+  var rzp1 = new Razorpay(options);
+
+  document.getElementById('rzp-button1').onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+  }
+  </script>
+
+</form>
+{{ name }}
+{{ email }}
+{{ donation }}<br>
+
+
+<form action="" method="POST">
+  <button type="button" name="button" id="rzp-button1">Submit</button>
+<!-- Note that the amount is in paise = 50 INR -->
+
+</form>
